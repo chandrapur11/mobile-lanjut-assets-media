@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Fade In Images',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const FadeInImageScreen(),
+    );
+  }
+}
+
+class FadeInImageScreen extends StatelessWidget {
+  const FadeInImageScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Fade In Images'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Image with Fade-In Effect',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            FadeInImage.assetNetwork(
+              placeholder: 'assets/12.jpg', // Gambar placeholder
+              image:
+                  'https://i.pinimg.com/736x/aa/eb/3c/aaeb3c2d7eaf40376303687794740d26.jpg', // URL gambar asli
+              width: 300,
+              height: 200,
+              fit: BoxFit.cover,
+              fadeInDuration: const Duration(seconds: 5),
+              fadeInCurve: Curves.easeIn,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
